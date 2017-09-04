@@ -145,6 +145,9 @@ def v_lep_izpis(beseda_seznam):
         izpis += " " + beseda_seznam[x]
     return izpis
 
+def preveri_crko(crka):
+    print(crka)
+
 okno=tk.Tk()
 okno.title("Vislice")
 naslov=tk.Label(okno,text= "ČAS JE ZA VISLICE!!!", fg="blue").grid(row = dobi_vrstico(),columnspan = SIRINA)
@@ -164,11 +167,13 @@ podnaslov=tk.Label(okno,text= "Izberi črko:").grid(row = dobi_vrstico(),columns
 # dodam gumbe za crke
 zacetek_gumbov = dobi_vrstico()
 for x in range(len(crke)):
-    gumb = tk.Button(okno,text = crke[x]).grid(row = x // SIRINA + zacetek_gumbov,column = x % SIRINA)
+    tk.Button(okno,text = crke[x], command = lambda crka=crke[x]: preveri_crko(crka))
+    .grid(row = x // SIRINA + zacetek_gumbov,column = x % SIRINA) # problemi z lambda
 row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze na pravilno vrstico
 
 tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
 izpis_lab = tk.Label(okno, text = v_lep_izpis(prikazan_text),font = 2000).grid(row = dobi_vrstico(),
                                                                                columnspan = SIRINA)
+
 
