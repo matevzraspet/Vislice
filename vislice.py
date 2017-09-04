@@ -175,10 +175,10 @@ izpis_lab = tk.Label(okno, textvariable = izpis,font = 2000).grid(row = dobi_vrs
                                                                          columnspan = SIRINA)
 # visl_text[0] -> string ki se prikaze, slika vislic
 # visl_text [1] -> koliko napacnih izbir je ze bilo
-visl_text = [tk.StringVar(),0]
+visl_text = [tk.StringVar(),0] # stevilo napak nastavimo na nic
 visl_text[0].set(HANGMAN[0])
 vislica = tk.Message(okno, textvariable = visl_text[0],font = 2000).grid(row = dobi_vrstico(),
-                                                                         columnspan = SIRINA)
+                                                                         columnspan = SIRINA) #Label poravna vsako vrstico na sredino, message pa vse skupaj sredinsko
 govor = tk.StringVar()
 tk.Label(okno, textvariable = govor,font = 2000).grid(row = dobi_vrstico(),
                                                                 columnspan = SIRINA)
@@ -208,9 +208,11 @@ def preveri_crko(crka):
     for x in range(len(trenutna_beseda)):
         if(crka == trenutna_beseda[x]):
             array_beseda[x] = crka #spreminjamo seznam
-    izpis.set(v_lep_izpis(array_beseda))
+    izpis.set(v_lep_izpis(array_beseda)) #naredi nov niz iz spremenjenega seznama
     govor.set("Crka " + str(crka) + " je v iskani besedi.")
 
     if '_' not in v_lep_izpis(array_beseda):
         govor.set("Zmagali ste.")
+
+okno.mainloop()
 
