@@ -161,6 +161,23 @@ crke=["A","B","C","Č","D","E","F","G","H","I","J","K","L","M","N","O","P","R",
 
 podnaslov=tk.Label(okno,text= "Izberi črko:").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
+# dodam gumbe za crke
+zacetek_gumbov = dobi_vrstico()
+for x in range(len(crke)):
+    tk.Button(okno,text = crke[x], command = lambda crka=crke[x]: preveri_crko(crka)).grid(row = x // SIRINA
+                        + zacetek_gumbov,column = x % SIRINA) # problemi z lambda
+row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze na pravilno vrstico
+
+tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
+
+izpis = tk.StringVar()
+izpis.set(v_lep_izpis(array_beseda))
+izpis_lab = tk.Label(okno, textvariable = izpis,font = 2000).grid(row = dobi_vrstico(),
+                                                                         columnspan = SIRINA)
+visl_text = [tk.StringVar(),0]
+visl_text[0].set(HANGMAN[0])
+vislica = tk.Message(okno, textvariable = visl_text[0],font = 2000).grid(row = dobi_vrstico(),
+                                                                         columnspan = SIRINA)
 def preveri_crko(crka):
     global izrecene_crke
     global trenutna_beseda
@@ -176,17 +193,6 @@ def preveri_crko(crka):
     for x in range(len(trenutna_beseda)):
         if(crka == trenutna_beseda[x]):
             array_beseda[x] = crka
-
-# dodam gumbe za crke
-zacetek_gumbov = dobi_vrstico()
-for x in range(len(crke)):
-    tk.Button(okno,text = crke[x], command = lambda crka=crke[x]: preveri_crko(crka)).grid(row = x // SIRINA
-                        + zacetek_gumbov,column = x % SIRINA) # problemi z lambda
-row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze na pravilno vrstico
-
-tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
-
-izpis_lab = tk.Label(okno, text = v_lep_izpis(array_beseda),font = 2000).grid(row = dobi_vrstico(),
-                                                                               columnspan = SIRINA)
+    izpis.set(v_lep_izpis(array_beseda))
 
 
