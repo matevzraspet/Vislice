@@ -142,7 +142,7 @@ def inicializacija_prikaza(dolzina_besede):
 def v_lep_izpis(beseda_seznam):
     izpis = beseda_seznam[0]
     for x in range(1,len(beseda_seznam)):
-        izpis += beseda_seznam[x] + " "
+        izpis += " " + beseda_seznam[x]
     return izpis
 
 okno=tk.Tk()
@@ -166,4 +166,4 @@ row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze 
 
 tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
-izpis_lab = tk
+izpis_lab = tk.Label(okno, text = v_lep_izpis(prikazan_text),font = 2000).grid(row = dobi_vrstico(),columnspan = SIRINA)
