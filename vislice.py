@@ -146,8 +146,11 @@ def v_lep_izpis(beseda_seznam):
     return izpis
 
 okno=tk.Tk()
+okno.title("Vislice")
 naslov=tk.Label(okno,text= "ČAS JE ZA VISLICE!!!", fg="blue").grid(row = dobi_vrstico(),columnspan = SIRINA)
-naslov1 = tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\nNa voljo za vsako besedo imate 10 poskusov, po tem pa ste obešeni...\nSte pripravljeni?", fg = "red").grid(row = dobi_vrstico(),columnspan = SIRINA)
+naslov1 = tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\n"
+                   +"Na voljo za vsako besedo imate 10 poskusov, po tem pa ste obešeni...\n"+
+                   "Ste pripravljeni?", fg = "red").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
 izrecene_crke =''
 trenutna_beseda = ISKANE_BESEDE[0] #prototip
@@ -166,4 +169,6 @@ row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze 
 
 tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
-izpis_lab = tk.Label(okno, text = v_lep_izpis(prikazan_text),font = 2000).grid(row = dobi_vrstico(),columnspan = SIRINA)
+izpis_lab = tk.Label(okno, text = v_lep_izpis(prikazan_text),font = 2000).grid(row = dobi_vrstico(),
+                                                                               columnspan = SIRINA)
+
