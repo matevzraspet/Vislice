@@ -1,5 +1,4 @@
 import tkinter as tk
-import time
 import random
 
 SIRINA = 9 # sirina mreze aplikacije
@@ -133,13 +132,13 @@ HANGMAN = (
 --------
 """)
 
-def inicializacija_prikaza(dolzina_besede):
+def inicializacija_prikaza(dolzina_besede): #naredi zacetno stanje 
     beseda = []
     for x in range(dolzina_besede):
         beseda.append('_')
-    return beseda
+    return beseda  
 
-def v_lep_izpis(beseda_seznam):
+def v_lep_izpis(beseda_seznam): #spremenimo v niz
     izpis = beseda_seznam[0]
     for x in range(1,len(beseda_seznam)):
         izpis += " " + beseda_seznam[x]
@@ -147,14 +146,14 @@ def v_lep_izpis(beseda_seznam):
 
 okno=tk.Tk()
 okno.title("Vislice")
-naslov=tk.Label(okno,text= "ČAS JE ZA VISLICE!!!", fg="blue").grid(row = dobi_vrstico(),columnspan = SIRINA)
-naslov1 = tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\n"
+tk.Label(okno,text= "ČAS JE ZA VISLICE!!!", fg="blue").grid(row = dobi_vrstico(),columnspan = SIRINA) #columnspan raztegne cez vec stolpcev
+tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\n"
                    +"Na voljo za vsako besedo imate 10 poskusov, po tem pa ste obešeni...\n"+
                    "Ste pripravljeni?", fg = "red").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
 izrecene_crke =''
 ran = random.randrange(0,len(ISKANE_BESEDE))
-trenutna_beseda = ISKANE_BESEDE[ran] #prototip
+trenutna_beseda = ISKANE_BESEDE[ran]  #izbere nakljucno besedo v seznamu
 array_beseda = inicializacija_prikaza(len(trenutna_beseda))
 crke=["A","B","C","Č","D","E","F","G","H","I","J","K","L","M","N","O","P","R",
           "S","Š","T","U","V","Z","Ž"]
@@ -170,8 +169,8 @@ row_count = zacetek_gumbov + len(crke)//SIRINA + 1 # nastavim da row_count kaze 
 
 tk.Label(okno, text = "Iskana beseda:").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
-izpis = tk.StringVar()
-izpis.set(v_lep_izpis(array_beseda))
+izpis = tk.StringVar() 
+izpis.set(v_lep_izpis(array_beseda)) # začetna nastavitev besedila, ki ga potem posodabljamo
 izpis_lab = tk.Label(okno, textvariable = izpis,font = 2000).grid(row = dobi_vrstico(),
                                                                          columnspan = SIRINA)
 # visl_text[0] -> string ki se prikaze, slika vislic
@@ -208,7 +207,7 @@ def preveri_crko(crka):
     
     for x in range(len(trenutna_beseda)):
         if(crka == trenutna_beseda[x]):
-            array_beseda[x] = crka
+            array_beseda[x] = crka #spreminjamo seznam
     izpis.set(v_lep_izpis(array_beseda))
     govor.set("Crka " + str(crka) + " je v iskani besedi.")
 
