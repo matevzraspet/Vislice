@@ -148,7 +148,7 @@ okno=tk.Tk()
 okno.title("Vislice")
 tk.Label(okno,text= "ČAS JE ZA VISLICE!!!", fg="blue").grid(row = dobi_vrstico(),columnspan = SIRINA) #columnspan raztegne cez vec stolpcev
 tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\n"
-                   +"Na voljo za vsako besedo imate 10 poskusov, po tem pa ste obešeni...\n"+
+                   +"Za vsako besedo imate na voljo 10 poskusov, po tem pa ste obešeni...\n"+
                    "Ste pripravljeni?", fg = "red").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
 izrecene_crke =''
