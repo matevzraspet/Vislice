@@ -182,12 +182,14 @@ def preveri_crko(crka):
     global izrecene_crke
     global trenutna_beseda
     global array_beseda
+    global visl_text
 
     if crka in izrecene_crke:
         return
     izrecene_crke += crka
     if crka not in trenutna_beseda:
-        print("DEBUG ni v besedi")
+        visl_text[1] += 1
+        visl_text[0].set(HANGMAN[visl_text[1]])
         return
     
     for x in range(len(trenutna_beseda)):
