@@ -153,9 +153,9 @@ naslov1 = tk.Label(okno, text = "Pozdravljeni v igrici Zabavne vislice.\n"
                    "Ste pripravljeni?", fg = "red").grid(row = dobi_vrstico(),columnspan = SIRINA)
 
 izrecene_crke =''
-trenutna_beseda = ISKANE_BESEDE[0] #prototip
+ran = random.randrange(0,len(ISKANE_BESEDE))
+trenutna_beseda = ISKANE_BESEDE[ran] #prototip
 array_beseda = inicializacija_prikaza(len(trenutna_beseda))
-stevilo_poskusov = 0 #možnih poskusov je 10
 crke=["A","B","C","Č","D","E","F","G","H","I","J","K","L","M","N","O","P","R",
           "S","Š","T","U","V","Z","Ž"]
 
@@ -199,7 +199,7 @@ def preveri_crko(crka):
     if crka not in trenutna_beseda:
         visl_text[1] += 1
         if visl_text[1] >= len(HANGMAN)-1:
-            govor.set("Zal ste izgubili. Konec igre.")
+            govor.set("Zal ste izgubili. Konec igre.\nIskana beseda je bila: " + trenutna_beseda)
             visl_text[0].set(HANGMAN[visl_text[1]])
             return
         visl_text[0].set(HANGMAN[visl_text[1]])
